@@ -8,6 +8,7 @@ import {BaseHttpService} from '../core/base-http/base-http.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RegisterService extends BaseHttpService<any> {
 
   private registerUrl = 'register/';

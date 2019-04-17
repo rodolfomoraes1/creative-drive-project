@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {PasswordValidation} from '../shared/password-validation';
+import {RegisterService} from "./register.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -9,8 +12,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  profiles = [
+    {'id': 1, 'name': 'ADMIN'},
+    {'id': 2, 'name': 'USER'}
+  ];
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder, private registerService: RegisterService, private router: Router) {
     this.registerForm = formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.compose([
@@ -21,7 +28,8 @@ export class RegisterComponent implements OnInit {
       profile: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
-    });
+    },
+      {validators: PasswordValidation.ValidCredentials});
   }
 
   ngOnInit() {
@@ -32,7 +40,20 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    //do something
+    this.registerService.registerUser(this.registerForm.value).then(data => {
+      this.router.navigateByUrl('/sales');
+    }, error => {
+      switch (error.status) {
+        case 400:
+          // this.errorDisplay = true;
+          // this.errorMessage = 'Error while trying to register';
+          break;
+        case 409:
+          // this.errorDisplay = true;
+          // this.errorMessage = 'Invalid username or username already taken';
+          break;
+      }
+    });;
   }
 
   formIsInvalid() {
@@ -47,5 +68,11 @@ export class RegisterComponent implements OnInit {
 
   isNullUndefinedOrEmpty(verifyValue) {
     return verifyValue === undefined || verifyValue === null || verifyValue.trim() === '';
+  }
+
+  getErrorMessage(fieldFormControl) {
+    return fieldFormControl.getError('required') ? 'You must enter a value' :
+      fieldFormControl.getError('email') ? 'Not a valid email' :
+        'Invalid value';
   }
 }

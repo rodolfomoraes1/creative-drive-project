@@ -19,8 +19,6 @@ export class LoginService extends BaseHttpService<any> {
     return this.post(this.loginUrl, user, this.handleError).then(
       res => {
         this.storeToken(res.token);
-      }, err => {
-        console.error(`Error to login user! ${err}`);
       }
     );
   }

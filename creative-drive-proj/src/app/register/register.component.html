@@ -1,48 +1,46 @@
-<mat-card class="row pt-5 col-md-6 mx-auto">
+<mat-card class="mt-2 p-5 col-md-4 mx-auto">
   <mat-card-header>
     <mat-card-title>Register</mat-card-title>
-    <mat-card-subtitle>Welcome user!</mat-card-subtitle>
+    <mat-card-subtitle>Welcome new user!</mat-card-subtitle>
   </mat-card-header>
-  <form class="example-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-      <mat-form-field class="m-5">
-        <p>Name</p>
-        <input matInput type="text" formControlName="name">
+      <mat-form-field class="col-md-12">
+        <input matInput type="text" formControlName="name" placeholder="Name">
         <mat-error *ngIf="registerForm.controls.name.errors">{{getErrorMessage(registerForm.controls.name)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="m-5">
-        <p>Email</p>
-        <input matInput type="text" formControlName="email">
+      <mat-form-field class="col-md-12">
+        <input matInput type="text" formControlName="email" placeholder="Email">
         <mat-error *ngIf="registerForm.controls.email.errors">{{getErrorMessage(registerForm.controls.email)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="m-5">
-        <p>CPF</p>
-        <input matInput type="text" formControlName="cpf">
+      <mat-form-field class="col-md-12">
+        <input matInput type="text" formControlName="cpf" placeholder="CPF">
         <mat-error *ngIf="registerForm.controls.cpf.errors">{{getErrorMessage(registerForm.controls.cpf)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="m-5">
-        <p>Profile</p>
-        <input matInput type="text" formControlName="profile">
+      <mat-form-field class="col-md-12">
+        <mat-select formControlName="profile" placeholder="Profile">
+          <mat-option *ngFor="let profile of profiles" value="{{profile.name}}">
+            {{ profile.name }}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="registerForm.controls.profile.errors">{{getErrorMessage(registerForm.controls.profile)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="m-5">
-        <p>Password</p>
-        <input matInput type="password" formControlName="password">
+      <mat-form-field class="col-md-12">
+        <input matInput type="password" formControlName="password" placeholder="Password">
         <mat-error *ngIf="registerForm.controls.password.errors">{{getErrorMessage(registerForm.controls.password)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="m-5">
-        <p>Confirm Password</p>
-        <input matInput type="password" formControlName="confirmPassword">
+      <mat-form-field class="col-md-12">
+        <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password">
         <mat-error *ngIf="registerForm.controls.confirmPassword.errors">{{getErrorMessage(registerForm.controls.confirmPassword)}}</mat-error>
       </mat-form-field>
 
       <mat-card-actions>
-        <!--[disabled]="reportDetails.invalid && formIsInvalid()"-->
         <button mat-button type="submit" [disabled]="registerForm.invalid && formIsInvalid()">Register</button>
       </mat-card-actions>
     </mat-card-content>
