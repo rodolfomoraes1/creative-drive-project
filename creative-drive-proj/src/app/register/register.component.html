@@ -1,0 +1,50 @@
+<mat-card class="row pt-5 col-md-6 mx-auto">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>Welcome user!</mat-card-subtitle>
+  </mat-card-header>
+  <form class="example-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field class="m-5">
+        <p>Name</p>
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf="registerForm.controls.name.errors">{{getErrorMessage(registerForm.controls.name)}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="m-5">
+        <p>Email</p>
+        <input matInput type="text" formControlName="email">
+        <mat-error *ngIf="registerForm.controls.email.errors">{{getErrorMessage(registerForm.controls.email)}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="m-5">
+        <p>CPF</p>
+        <input matInput type="text" formControlName="cpf">
+        <mat-error *ngIf="registerForm.controls.cpf.errors">{{getErrorMessage(registerForm.controls.cpf)}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="m-5">
+        <p>Profile</p>
+        <input matInput type="text" formControlName="profile">
+        <mat-error *ngIf="registerForm.controls.profile.errors">{{getErrorMessage(registerForm.controls.profile)}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="m-5">
+        <p>Password</p>
+        <input matInput type="password" formControlName="password">
+        <mat-error *ngIf="registerForm.controls.password.errors">{{getErrorMessage(registerForm.controls.password)}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="m-5">
+        <p>Confirm Password</p>
+        <input matInput type="password" formControlName="confirmPassword">
+        <mat-error *ngIf="registerForm.controls.confirmPassword.errors">{{getErrorMessage(registerForm.controls.confirmPassword)}}</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <!--[disabled]="reportDetails.invalid && formIsInvalid()"-->
+        <button mat-button type="submit" [disabled]="registerForm.invalid && formIsInvalid()">Register</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
+</mat-card>
