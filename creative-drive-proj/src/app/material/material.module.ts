@@ -9,7 +9,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatSelectModule,
+  MatSelectModule, MatSnackBarModule,
   MatStepperModule
 } from '@angular/material';
 
@@ -24,7 +24,8 @@ import {
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -34,7 +35,8 @@ import {
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

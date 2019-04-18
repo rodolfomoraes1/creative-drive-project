@@ -1,16 +1,24 @@
-<mat-card class="row pt-5 col-md-6 mx-auto">
+<mat-card class="mt-2 p-5 col-md-4 mx-auto">
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Welcome!</mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field class="col-md-12">
+        <input matInput type="text" formControlName="email" placeholder="Email">
+        <mat-error *ngIf="loginForm.controls.email.errors">{{getErrorMessage(loginForm.controls.email)}}</mat-error>
+      </mat-form-field>
 
-    <form>
+      <mat-form-field class="col-md-12">
+        <input matInput type="password" formControlName="password" placeholder="Password">
+        <mat-error *ngIf="loginForm.controls.password.errors">{{getErrorMessage(loginForm.controls.password)}}</mat-error>
+      </mat-form-field>
 
-    </form>
-
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>Login</button>
-  </mat-card-actions>
+      <mat-card-actions>
+        <button mat-button type="submit" [disabled]="loginForm.invalid && formIsInvalid()">Login</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
 </mat-card>

@@ -47,3 +47,6 @@ Thumbs.db
 
 #Idea Files
 .idea
+
+# package-lock
+package-lock.json

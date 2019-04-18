@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor } from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
-import {Router} from '@angular/router';
+
 import {LoginService} from '../../login/login.service';
 
 
@@ -11,7 +11,7 @@ import {LoginService} from '../../login/login.service';
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService) { }
 
   intercept(req, next) {
 

@@ -41,19 +41,10 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerService.registerUser(this.registerForm.value).then(data => {
-      this.router.navigateByUrl('/sales');
+      this.router.navigateByUrl('/dashboard');
     }, error => {
-      switch (error.status) {
-        case 400:
-          // this.errorDisplay = true;
-          // this.errorMessage = 'Error while trying to register';
-          break;
-        case 409:
-          // this.errorDisplay = true;
-          // this.errorMessage = 'Invalid username or username already taken';
-          break;
-      }
-    });;
+      console.error('Register error!', error.status);
+    });
   }
 
   formIsInvalid() {

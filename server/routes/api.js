@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require('../models/user');
 
 const mongoose = require('mongoose');
-const db = 'mongodb+srv://root:root@cluster0-0m5fr.mongodb.net/ophigousersdb?retryWrites=true';
+const db = 'mongodb+srv://root:root@cluster0-0m5fr.mongodb.net/creativedriveusersdb?retryWrites=true';
 
 const TOKEN_KEY = 'secretKey';
 
@@ -75,17 +75,31 @@ router.post('/login', (req, res) => {
                 } else {
                     let payload = { subject: user._id };
                     let token = jwt.sign(payload, TOKEN_KEY, {expiresIn: '7d'});
-                    res.status(200).send({token, 'name': user.name});
+                    res.status(200).send({token, 'user': user});
                 }
             }
         }
     })
 });
 
-router.get('/getAll', verifyToken, (req, res) => {
-    User.find().lean().exec(function (err, users) {
-        return res.end(JSON.stringify(users));
-    });
+router.get('/getUsers', verifyToken, (req, res) => {
+    User.findOne({email: userData.email}, (error, user) => {
+        if (error) {
+            console.error('Error! ' + error);
+        } else {
+            if (!user) {
+                res.status(401).send('Invalid email');
+            } else {
+                if (user.profile === 'ADMIN') {
+                    User.find().lean().exec(function (err, users) {
+                        return res.end(JSON.stringify(users));
+                    });
+                } else {
+                    res.status(200).send({user});
+                }
+            }
+        }
+    })
 });
 
 module.exports = router;
