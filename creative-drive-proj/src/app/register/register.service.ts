@@ -21,6 +21,7 @@ export class RegisterService extends BaseHttpService<any> {
     return this.post(this.registerUrl, user, this.handleError).then(
       res => {
         this.storeTokens(res.token);
+        this.router.navigateByUrl('/dashboard');
       }, err => {
         console.error(`Error to register user! ${err}`);
       }

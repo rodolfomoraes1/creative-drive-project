@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerService.registerUser(this.registerForm.value).then(data => {
-      this.router.navigateByUrl('/dashboard');
     }, error => {
       console.error('Register error!', error.status);
     });

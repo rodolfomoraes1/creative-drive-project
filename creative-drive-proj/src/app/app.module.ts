@@ -7,6 +7,7 @@ import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
 import { PathNotFoundComponent } from './path-not-found/path-not-found.component';
@@ -16,7 +17,6 @@ import {RegisterService} from './register/register.service';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login/login.service';
 import {TokenInterceptorService} from './core/token-interceptor/token-interceptor.service';
-
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import {TokenInterceptorService} from './core/token-interceptor/token-intercepto
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     LayoutModule,

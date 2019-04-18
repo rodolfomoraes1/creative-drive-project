@@ -83,19 +83,23 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/getUsers', verifyToken, (req, res) => {
-    User.findOne({email: userData.email}, (error, user) => {
+    let token = req.headers.authorization.split(' ')[1];
+    let payload = jwt.verify(token, TOKEN_KEY);
+    let userId = payload.subject;
+
+    User.findOne({_id: userId}, (error, users) => {
         if (error) {
             console.error('Error! ' + error);
         } else {
-            if (!user) {
-                res.status(401).send('Invalid email');
+            if (!users) {
+                res.status(401).send('User not allowed or doesnt exist');
             } else {
-                if (user.profile === 'ADMIN') {
+                if (users.profile === 'ADMIN') {
                     User.find().lean().exec(function (err, users) {
-                        return res.end(JSON.stringify(users));
+                        res.status(200).send({users});
                     });
                 } else {
-                    res.status(200).send({user});
+                    res.status(200).send({'users': [users]});
                 }
             }
         }

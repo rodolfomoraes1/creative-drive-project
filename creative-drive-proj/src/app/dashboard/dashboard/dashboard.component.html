@@ -1,3 +1,9 @@
-<p>
-  dashboard works!
-</p>
+<mat-list role="list">
+  <mat-list-item *ngFor="let user of allUsers">
+    <p mat-line> Name: {{user.name}} </p>
+    <p mat-line> Email: {{user.email}} </p>
+    <p mat-line> Profile: {{user.profile}} </p>
+    <p mat-line> CPF: {{user.cpf}} </p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
