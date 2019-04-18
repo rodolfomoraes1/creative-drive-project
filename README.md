@@ -1,19 +1,14 @@
-# CreativeDriveProj
+# Creative Drive Project Backend
 
-This project is under development
+This backend was built using:
+ - nodejs
+ - express
+ - mongodb
+ - mongoose
+ 
+The purpose of this basic server is to help test the login, register, authentication and list users based on role.
 
-## Development server
+## Run In Development Mode 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Open the project's folder, use "npm install" to install the dependencies and type "node server' to serve the application.
+This server will be running on localhost and port 3000. Wait until you receive the "Connected to mongodb" message on your console to make sure your db is online and ready.

@@ -1,19 +1,20 @@
-# CreativeDriveProj
+# Creative Drive Project
 
-This project is under development
+This project is using the following technologies:
+- angular 7
+- angular material
+- bootstrap 4
 
-## Development server
+## Run in Development mode
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Open the project folder on your terminal or ide, type "npm install" to install all dependencies and type "ng serve" to serve the angular app in localhost using port 4200.
+Ps.: Make sure you have node.js installed and npm.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Next steps
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To finish all the requirements the next steps are the unit tests and search screen.
+   
